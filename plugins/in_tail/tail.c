@@ -304,6 +304,10 @@ static int in_tail_init(struct flb_input_instance *in,
      */
     ctx->read_from_head = FLB_TRUE;
 
+#ifdef FLB_HAVE_SQLDB
+    ctx->ignore_older = 5 * 60L;
+#endif
+
     /* Set plugin context */
     flb_input_set_context(in, ctx);
 
