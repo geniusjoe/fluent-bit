@@ -1684,7 +1684,7 @@ static int check_purge_deleted_file(struct flb_tail_config *ctx,
     if (ctx->ignore_older > 0) {
         mtime = flb_tail_stat_mtime(&st);
         if (mtime > 0) {
-            if ((ts - ctx->ignore_older) > mtime) {
+            if ((ts - ctx->ignore_older) > mtime && file->offset >= st.st_size) {
                 flb_plg_debug(ctx->ins, "purge: monitored file (ignore older): %s",
                               file->name);
                 flb_tail_file_remove(file);
