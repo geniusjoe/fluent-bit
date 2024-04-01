@@ -144,6 +144,9 @@ struct flb_kafka *flb_kafka_conf_create(struct flb_output_instance *ins,
             ctx->format = FLB_KAFKA_FMT_AVRO;
         }
 #endif
+        else if (strcasecmp(tmp, "raw") == 0) {
+            ctx->format = FLB_KAFKA_FMT_RAW;
+        }
     }
     else {
         ctx->format = FLB_KAFKA_FMT_JSON;
@@ -169,6 +172,17 @@ struct flb_kafka *flb_kafka_conf_create(struct flb_output_instance *ins,
     else {
         ctx->message_key_field = NULL;
         ctx->message_key_field_len = 0;
+    }
+
+    /* Config: Raw_log_Key */
+    tmp = flb_output_get_property("raw_log_key", ins);
+    if (tmp) {
+        ctx->raw_log_key = flb_strdup(tmp);
+        ctx->raw_log_key_len = strlen(tmp);
+    }
+    else {
+        ctx->raw_log_key = NULL;
+        ctx->raw_log_key_len = 0;
     }
 
     /* Config: Timestamp_Key */
