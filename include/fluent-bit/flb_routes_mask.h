@@ -40,7 +40,7 @@
  * The router can route to. For example: with a value of 4 using
  * 64-bit integers the bitmask can represent up to 256 output plugins
  */
-#define FLB_ROUTES_MASK_ELEMENTS		4
+#define FLB_ROUTES_MASK_ELEMENTS		40
 
 /*
  * How many bits are in each element of the bitmask array
