@@ -455,7 +455,7 @@ static inline int apply_lifting_rules(msgpack_packer * packer,
     int toplevel_items =
         (map.via.map.size - items_to_lift) + count_items_to_lift(&map, ctx);
 
-    flb_plg_debug(ctx->ins, "Lift : Outer map size is %d, will be %d, "
+    flb_plg_trace(ctx->ins, "Lift : Outer map size is %d, will be %d, "
                   "lifting %d record(s)",
                   map.via.map.size, toplevel_items, items_to_lift);
 
